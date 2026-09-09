@@ -1,0 +1,6 @@
+{
+  "name": "R-Financial Group",
+  "description": "Plateforme d'offres de prêt en ligne moderne, rapide et sécurisée par R-Financial group.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
