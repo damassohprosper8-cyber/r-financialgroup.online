@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 200" fill="none">
+  <!-- Icon Mark -->
+  <g transform="translate(10, 5)">
+    <path
+      d="M 80 8 L 148 72 L 104 72 L 104 146 L 118 146 L 118 84 L 141 84 L 141 137 C 146 140, 150 144, 147 148 L 144 153 L 15 186 C 10 183, 9 177, 13 172 L 19 166 L 19 84 L 42 84 L 42 164 L 56 164 L 56 72 L 12 72 Z"
+      fill="#EE4141"
+    />
+  </g>
+  <!-- Typography ROHR FINANCIAL -->
+  <g fill="#0E1B3D" font-family="system-ui, -apple-system, 'Plus Jakarta Sans', 'Segoe UI', Roboto, sans-serif">
+    <text x="180" y="98" font-size="96" font-weight="900" letter-spacing="-1.5px">ROHR</text>
+    <text x="183" y="152" font-size="43" font-weight="800" letter-spacing="9px">FINANCIAL</text>
+  </g>
+</svg>

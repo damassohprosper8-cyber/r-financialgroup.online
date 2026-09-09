@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Shield, Mail, MapPin, Lock } from 'lucide-react';
+import { RohrLogoIcon } from './RohrLogo';
 
 interface FooterProps {
   onSecretAdminTrigger?: () => void;
@@ -37,13 +38,18 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Brand & Presentation */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2">
-              <div className="w-9 h-9 rounded-xl bg-blue-600 flex items-center justify-center text-white font-black text-xl shadow-sm">
-                R
+            <div className="flex items-center gap-2.5">
+              <div className="w-9 h-9 flex items-center justify-center shrink-0">
+                <RohrLogoIcon className="w-9 h-9" />
               </div>
-              <span className="text-xl font-extrabold text-white tracking-tight">
-                R-Financial <span className="text-blue-400 font-semibold">group</span>
-              </span>
+              <div className="flex flex-col select-none leading-none">
+                <span className="text-xl font-black tracking-tight text-white leading-none">
+                  ROHR
+                </span>
+                <span className="text-[10px] font-extrabold text-slate-200 tracking-[0.24em] uppercase leading-tight mt-0.5">
+                  FINANCIAL
+                </span>
+              </div>
             </div>
             <p className="text-xs text-slate-400 leading-relaxed">
               Plateforme dédiée au financement en ligne rapide, transparent et accessible. Simulation immédiate en temps réel, 0 € de frais de dossier et étude personnalisée.

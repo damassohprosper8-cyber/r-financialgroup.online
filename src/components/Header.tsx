@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Mail, Menu, X, ArrowRight } from 'lucide-react';
+import { RohrLogoIcon } from './RohrLogo';
 
 interface HeaderProps {
   onOpenSimulator: () => void;
@@ -49,18 +50,17 @@ export const Header: React.FC<HeaderProps> = ({
             <div
               onClick={handleLogoSecretClick}
               className="flex items-center gap-2.5 group cursor-pointer select-none"
-              title="R-Financial group"
+              title="ROHR Financial"
             >
-              <div className="w-11 h-11 rounded-xl bg-gradient-to-br from-blue-700 via-blue-800 to-indigo-900 flex items-center justify-center text-white font-black text-2xl shadow-md shadow-blue-900/20 group-hover:scale-105 transition-transform">
-                R
+              <div className="w-11 h-11 flex items-center justify-center group-hover:scale-105 transition-transform shrink-0">
+                <RohrLogoIcon className="w-11 h-11" />
               </div>
               <div className="flex flex-col">
-                <span className="text-xl font-extrabold tracking-tight text-slate-900 flex items-center gap-1.5">
-                  R-Financial <span className="text-blue-700 font-semibold">group</span>
+                <span className="text-xl font-black tracking-tight text-[#0E1B3D] flex items-center leading-none">
+                  ROHR
                 </span>
-                <span className="text-[11px] font-medium text-slate-500 flex items-center gap-1">
-                  <Shield className="w-3 h-3 text-emerald-600 inline" />
-                  Financement direct & transparent
+                <span className="text-[10px] font-extrabold text-[#0E1B3D] tracking-[0.24em] uppercase leading-tight mt-0.5">
+                  FINANCIAL
                 </span>
               </div>
             </div>
