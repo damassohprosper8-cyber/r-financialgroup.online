@@ -37,14 +37,41 @@
   }
 }
 
-/* Intégration transparente Google Translate : Préservation absolue de la charte graphique et du design */
+/* Intégration transparente Google Translate : Préservation absolue de la charte graphique et neutralisation de tous les pop-ups */
 .goog-te-banner-frame,
 .goog-te-banner-frame.skiptranslate,
-iframe.goog-te-banner-frame {
+iframe.goog-te-banner-frame,
+body > .skiptranslate,
+#goog-gt-tt,
+#goog-gt-tt *,
+#goog-gt-vt,
+.goog-te-balloon-frame,
+.goog-tooltip,
+.goog-tooltip:hover,
+.VIpgJd-yAWneB-L7tpub,
+.VIpgJd-yAWneB-L7tpub-pvdH9,
+.VIpgJd-yAWneB-hvhgNd,
+.VIpgJd-yAWneB-r9Qyie,
+.VIpgJd-ZVi9od-aZ2wEe,
+.VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+.VIpgJd-ZVi9od-ORHb-OEVmcd,
+.VIpgJd-ZVi9od-ORHb-OEVmcd-ti6hGc,
+.VIpgJd-ZVi9od-xl07Ob-OEVmcd,
+#google_translate_element,
+iframe[id^=":"] {
   display: none !important;
   visibility: hidden !important;
-  height: 0 !important;
   opacity: 0 !important;
+  pointer-events: none !important;
+  position: absolute !important;
+  top: -9999px !important;
+  left: -9999px !important;
+  width: 0 !important;
+  height: 0 !important;
+  max-width: 0 !important;
+  max-height: 0 !important;
+  border: none !important;
+  z-index: -9999 !important;
 }
 
 body {
@@ -52,18 +79,11 @@ body {
   position: static !important;
 }
 
-#goog-gt-tt,
-.goog-te-balloon-frame {
-  display: none !important;
-  visibility: hidden !important;
-}
-
 .goog-text-highlight {
-  background: none !important;
+  background: transparent !important;
+  background-color: transparent !important;
   box-shadow: none !important;
-}
-
-#google_translate_element {
-  display: none !important;
+  border: none !important;
+  cursor: inherit !important;
 }
 

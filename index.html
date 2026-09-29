@@ -15,6 +15,56 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+      /* Neutralisation totale et définitive de tout pop-up, bannière, infobulle Google Translate */
+      .goog-te-banner-frame,
+      .goog-te-banner-frame.skiptranslate,
+      iframe.goog-te-banner-frame,
+      body > .skiptranslate,
+      #goog-gt-tt,
+      #goog-gt-vt,
+      .goog-te-balloon-frame,
+      .goog-tooltip,
+      .goog-tooltip:hover,
+      .VIpgJd-yAWneB-L7tpub,
+      .VIpgJd-yAWneB-L7tpub-pvdH9,
+      .VIpgJd-yAWneB-hvhgNd,
+      .VIpgJd-yAWneB-r9Qyie,
+      .VIpgJd-ZVi9od-aZ2wEe,
+      .VIpgJd-ZVi9od-aZ2wEe-OiiCO,
+      .VIpgJd-ZVi9od-ORHb-OEVmcd,
+      .VIpgJd-ZVi9od-ORHb-OEVmcd-ti6hGc,
+      .VIpgJd-ZVi9od-xl07Ob-OEVmcd,
+      #google_translate_element,
+      iframe[id^=":"] {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+        pointer-events: none !important;
+        position: absolute !important;
+        top: -9999px !important;
+        left: -9999px !important;
+        width: 0 !important;
+        height: 0 !important;
+        max-width: 0 !important;
+        max-height: 0 !important;
+        border: none !important;
+        z-index: -9999 !important;
+      }
+
+      body {
+        top: 0px !important;
+        position: static !important;
+      }
+
+      .goog-text-highlight {
+        background: transparent !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+        border: none !important;
+        cursor: inherit !important;
+      }
+    </style>
   </head>
   <body class="font-sans antialiased text-slate-900 bg-slate-50">
     <div id="root"></div>
@@ -29,6 +79,34 @@
           autoDisplay: false
         }, 'google_translate_element');
       }
+
+      // Neutralisation dynamique continue des pop-ups et bannières injectés
+      (function() {
+        function removeGooglePopups() {
+          if (document.body && document.body.style.top && document.body.style.top !== '0px') {
+            document.body.style.setProperty('top', '0px', 'important');
+          }
+          var targets = document.querySelectorAll(
+            '#goog-gt-tt, #goog-gt-vt, .goog-te-balloon-frame, .VIpgJd-yAWneB-L7tpub, .VIpgJd-yAWneB-hvhgNd, .VIpgJd-ZVi9od-ORHb-OEVmcd, iframe.goog-te-banner-frame, body > .skiptranslate'
+          );
+          targets.forEach(function(el) {
+            if (el && el.id !== 'google_translate_element') {
+              el.style.setProperty('display', 'none', 'important');
+              el.style.setProperty('visibility', 'hidden', 'important');
+              el.style.setProperty('opacity', '0', 'important');
+              el.style.setProperty('pointer-events', 'none', 'important');
+            }
+          });
+        }
+
+        var observer = new MutationObserver(removeGooglePopups);
+        document.addEventListener('DOMContentLoaded', function() {
+          removeGooglePopups();
+          if (document.body) {
+            observer.observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['style', 'class'] });
+          }
+        });
+      })();
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
