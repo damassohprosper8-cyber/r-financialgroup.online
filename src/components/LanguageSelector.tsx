@@ -83,59 +83,95 @@ export const LANGUAGES: Language[] = [
   },
 ];
 
-// Helper to get active language from cookie or localStorage
+// Helper to clear all googtrans cookies across all domains and paths
+export function clearAllGoogTransCookies() {
+  if (typeof document === 'undefined') return;
+
+  const host = window.location.hostname;
+  const hostParts = host ? host.split('.') : [];
+
+  const domains: (string | null)[] = [null, '', host, `.${host}`];
+
+  for (let i = 0; i < hostParts.length - 1; i++) {
+    const parent = hostParts.slice(i).join('.');
+    domains.push(parent);
+    domains.push(`.${parent}`);
+  }
+
+  const paths = ['/', window.location.pathname];
+
+  domains.forEach((dom) => {
+    paths.forEach((pth) => {
+      const d = dom ? `; domain=${dom}` : '';
+      document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=${pth}${d};`;
+    });
+  });
+
+  // Second pass to ensure no lingering cookie remains
+  const currentCookies = document.cookie.split(';');
+  for (const c of currentCookies) {
+    const name = c.split('=')[0]?.trim();
+    if (name === 'googtrans') {
+      document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=/;';
+    }
+  }
+}
+
+// Helper to get active language from localStorage (source of truth) or cookie
 export function getActiveLanguage(): string {
   if (typeof window === 'undefined') return 'fr';
-  
-  // 1. Check googtrans cookie
+
+  // 1. Check localStorage first (priority source of truth)
+  const saved = localStorage.getItem('rohr_preferred_lang');
+  if (saved) {
+    const normalized = saved.toLowerCase().trim();
+    if (normalized.length >= 2) return normalized;
+  }
+
+  // 2. Fallback to googtrans cookie
   const match = document.cookie.match(/(?:^|;\s*)googtrans=([^;]+)/);
   if (match && match[1]) {
     const parts = decodeURIComponent(match[1]).split('/');
-    const lang = parts[parts.length - 1];
-    if (lang && lang.length >= 2) {
-      return lang.toLowerCase();
+    const lang = parts[parts.length - 1]?.toLowerCase().trim();
+    if (lang && lang.length >= 2 && lang !== 'fr') {
+      return lang;
     }
   }
-
-  // 2. Check localStorage
-  const saved = localStorage.getItem('rohr_preferred_lang');
-  if (saved) return saved;
 
   return 'fr';
 }
 
 export function applyLanguageTranslation(targetLang: string) {
-  const current = getActiveLanguage();
-  if (targetLang === current && targetLang === 'fr') return;
+  const normalizedLang = targetLang.toLowerCase().trim();
 
-  localStorage.setItem('rohr_preferred_lang', targetLang);
+  // 1. Enregistre immédiatement la nouvelle langue dans localStorage
+  localStorage.setItem('rohr_preferred_lang', normalizedLang);
 
-  const hostname = window.location.hostname;
-  const cookieDomain = hostname === 'localhost' ? '' : `domain=${hostname};`;
+  // 2. Nettoie méticuleusement tous les anciens cookies de traduction existants
+  clearAllGoogTransCookies();
 
-  if (targetLang === 'fr') {
-    // Reset translation to original French
-    document.cookie = `googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/; ${cookieDomain}`;
-    document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
-    document.cookie = 'googtrans=/fr/fr; path=/;';
-  } else {
-    // Set Google Translate cookie
-    document.cookie = `googtrans=/fr/${targetLang}; path=/; ${cookieDomain}`;
-    document.cookie = `googtrans=/fr/${targetLang}; path=/;`;
-    document.cookie = `googtrans=/auto/${targetLang}; path=/;`;
+  // 3. Si la langue cible n'est PAS le français (original), définit le nouveau cookie
+  if (normalizedLang !== 'fr') {
+    const cookieValue = `/fr/${normalizedLang}`;
+    document.cookie = `googtrans=${cookieValue}; path=/;`;
+
+    const host = window.location.hostname;
+    if (host && host !== 'localhost' && !host.includes('127.0.0.1')) {
+      document.cookie = `googtrans=${cookieValue}; path=/; domain=.${host};`;
+    }
   }
 
-  // Trigger Google Translate combo element if already present in DOM
+  // 4. Déclenche immédiatement l'élément select de Google Translate si présent dans le DOM
   const combo = document.querySelector('.goog-te-combo') as HTMLSelectElement | null;
   if (combo) {
-    combo.value = targetLang === 'fr' ? '' : targetLang;
+    combo.value = normalizedLang === 'fr' ? '' : normalizedLang;
     combo.dispatchEvent(new Event('change', { bubbles: true }));
   }
 
-  // Reload page smoothly to ensure complete and seamless DOM translation
+  // 5. Recharge la page pour que la nouvelle langue s'applique de manière propre et intégrale
   setTimeout(() => {
     window.location.reload();
-  }, 100);
+  }, 120);
 }
 
 interface LanguageSelectorProps {

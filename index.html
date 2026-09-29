@@ -107,6 +107,21 @@
           }
         });
       })();
+
+      // Synchronisation de la langue choisie avant l'initialisation du moteur de traduction
+      (function() {
+        try {
+          var preferred = localStorage.getItem('rohr_preferred_lang');
+          if (preferred === 'fr') {
+            document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=/;';
+            if (window.location.hostname) {
+              document.cookie = 'googtrans=; expires=Thu, 01 Jan 1970 00:00:00 GMT; Max-Age=0; path=/; domain=.' + window.location.hostname + ';';
+            }
+          } else if (preferred && preferred.length >= 2) {
+            document.cookie = 'googtrans=/fr/' + preferred.toLowerCase() + '; path=/;';
+          }
+        } catch(e) {}
+      })();
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
