@@ -496,7 +496,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                     className="w-4 h-4 rounded text-blue-600 focus:ring-blue-500 mt-0.5"
                   />
                   <span>
-                    J'autorise R-Financial group à traiter mes données pour l'analyse de ma demande de crédit et confirme avoir pris connaissance de la politique de confidentialité RGPD. <span className="text-rose-600 font-bold">*</span>
+                    J'autorise <span className="notranslate" translate="no">R-Financial group</span> à traiter mes données pour l'analyse de ma demande de crédit et confirme avoir pris connaissance de la politique de confidentialité RGPD. <span className="text-rose-600 font-bold">*</span>
                   </span>
                 </label>
               </div>
@@ -653,12 +653,12 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                       ✉️ Template E-mail Client • Notification SMTP
                     </div>
                     <div><strong>À :</strong> {savedRecord?.email}</div>
-                    <div><strong>De :</strong> R-Financial Group &lt;contact@r-financialgroup.online&gt;</div>
+                    <div><strong>De :</strong> <span className="notranslate" translate="no">R-Financial Group</span> &lt;contact@r-financialgroup.online&gt;</div>
                     <div><strong>Objet :</strong> Confirmation de votre demande de prêt - Dossier {savedRecord?.reference}</div>
                     <div><strong>Reply-To :</strong> contact@r-financialgroup.online</div>
                     <div className="p-3 bg-white border border-slate-200 rounded font-sans text-xs space-y-2 mt-2">
                       <p>Bonjour {savedRecord?.firstName} {savedRecord?.lastName},</p>
-                      <p>Nous vous confirmons la bonne réception de votre demande de prêt en ligne sur la plateforme R-Financial group.</p>
+                      <p>Nous vous confirmons la bonne réception de votre demande de prêt en ligne sur la plateforme <span className="notranslate" translate="no">R-Financial group</span>.</p>
                       <ul className="list-disc list-inside space-y-0.5 text-slate-700">
                         <li><strong>Référence de dossier :</strong> {savedRecord?.reference}</li>
                         <li><strong>Montant du projet :</strong> {formatEuro(savedRecord?.amount || 0)}</li>
@@ -668,7 +668,7 @@ export const ApplicationModal: React.FC<ApplicationModalProps> = ({
                       </ul>
                       <p>Un conseiller dédié analyse votre dossier et prendra contact avec vous sous 24h à 48h ouvrées. Pour toute question, vous pouvez répondre directement à cet e-mail.</p>
                       <p className="text-slate-500 text-[11px] pt-1 border-t border-slate-100">
-                        Service Client R-Financial Group • contact@r-financialgroup.online • 8 Rue Edmond De Goncourt, 94000 Créteil, France
+                        Service Client <span className="notranslate" translate="no">R-Financial Group</span> • <span className="notranslate" translate="no">contact@r-financialgroup.online</span> • 8 Rue Edmond De Goncourt, 94000 Créteil, France
                       </p>
                     </div>
                   </div>

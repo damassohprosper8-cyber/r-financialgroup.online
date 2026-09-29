@@ -46,15 +46,15 @@ export const RohrLogo: React.FC<RohrLogoProps> = ({
   const secondaryColor = isDark ? 'text-slate-200' : 'text-[#0E1B3D]';
 
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
-      <div className="shrink-0 flex items-center justify-center">
+    <div className={`flex items-center gap-3 notranslate ${className}`} translate="no">
+      <div className="shrink-0 flex items-center justify-center notranslate" translate="no">
         <RohrLogoIcon className="h-10 sm:h-11 w-auto" />
       </div>
-      <div className="flex flex-col select-none leading-none">
-        <span className={`font-black text-2xl sm:text-[26px] tracking-tight ${primaryColor}`}>
+      <div className="flex flex-col select-none leading-none notranslate" translate="no">
+        <span className={`font-black text-2xl sm:text-[26px] tracking-tight notranslate ${primaryColor}`} translate="no">
           ROHR
         </span>
-        <span className={`font-extrabold text-[10px] sm:text-[11px] tracking-[0.24em] uppercase mt-0.5 ${secondaryColor}`}>
+        <span className={`font-extrabold text-[10px] sm:text-[11px] tracking-[0.24em] uppercase mt-0.5 notranslate ${secondaryColor}`} translate="no">
           FINANCIAL
         </span>
       </div>

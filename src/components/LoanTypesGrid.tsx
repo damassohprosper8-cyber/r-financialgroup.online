@@ -15,6 +15,7 @@ import {
 import { ProjectType } from '../types';
 import { PROJECT_OPTIONS } from '../data';
 import { formatEuro } from '../utils/loanCalculator';
+import { protectBrand } from '../utils/brandProtection';
 
 const masterEase = [0.16, 1, 0.3, 1];
 
@@ -118,7 +119,7 @@ export const LoanTypesGrid: React.FC<LoanTypesGridProps> = ({ onSelectAndSimulat
                     {item.title}
                   </h3>
                   <p className="text-xs text-slate-500 mt-1.5 leading-relaxed min-h-[36px]">
-                    {item.description}
+                    {protectBrand(item.description)}
                   </p>
                 </div>
 
@@ -210,15 +211,16 @@ export const LoanTypesGrid: React.FC<LoanTypesGridProps> = ({ onSelectAndSimulat
             </div>
             <div>
               <h4 className="font-extrabold text-sm sm:text-base">Une question sur votre projet ou votre simulation ?</h4>
-              <p className="text-xs text-blue-200">Notre équipe R-Financial group vous répond rapidement et en toute confidentialité.</p>
+              <p className="text-xs text-blue-200">Notre équipe <span className="notranslate" translate="no">R-Financial group</span> vous répond rapidement et en toute confidentialité.</p>
             </div>
           </div>
           <a
             href="mailto:contact@r-financialgroup.online"
-            className="shrink-0 px-5 py-2.5 bg-white text-blue-900 hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center gap-2"
+            className="shrink-0 px-5 py-2.5 bg-white text-blue-900 hover:bg-blue-50 font-bold text-xs sm:text-sm rounded-xl transition-all shadow-sm flex items-center gap-2 notranslate"
+            translate="no"
           >
             <Mail className="w-4 h-4 text-blue-700" />
-            <span>contact@r-financialgroup.online</span>
+            <span className="notranslate" translate="no">contact@r-financialgroup.online</span>
           </a>
         </motion.div>
       </div>

@@ -39,15 +39,15 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Column 1: Brand & Presentation */}
           <div className="space-y-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-9 h-9 flex items-center justify-center shrink-0">
+            <div className="flex items-center gap-2.5 notranslate" translate="no">
+              <div className="w-9 h-9 flex items-center justify-center shrink-0 notranslate" translate="no">
                 <RohrLogoIcon className="w-9 h-9" />
               </div>
-              <div className="flex flex-col select-none leading-none">
-                <span className="text-xl font-black tracking-tight text-white leading-none">
+              <div className="flex flex-col select-none leading-none notranslate" translate="no">
+                <span className="text-xl font-black tracking-tight text-white leading-none notranslate" translate="no">
                   ROHR
                 </span>
-                <span className="text-[10px] font-extrabold text-slate-200 tracking-[0.24em] uppercase leading-tight mt-0.5">
+                <span className="text-[10px] font-extrabold text-slate-200 tracking-[0.24em] uppercase leading-tight mt-0.5 notranslate" translate="no">
                   FINANCIAL
                 </span>
               </div>
@@ -80,7 +80,7 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
             <div className="space-y-2.5 text-xs text-slate-400">
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-blue-400 shrink-0" />
-                <a href="mailto:contact@r-financialgroup.online" className="text-white hover:text-blue-300 transition-colors">
+                <a href="mailto:contact@r-financialgroup.online" className="text-white hover:text-blue-300 transition-colors notranslate" translate="no">
                   contact@r-financialgroup.online
                 </a>
               </div>
@@ -109,7 +109,7 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
         {/* Detailed Legal Disclosures */}
         <div className="pt-8 border-t border-slate-800/80 text-[11px] text-slate-400 leading-relaxed space-y-2">
           <p>
-            <strong>R-Financial group</strong> – Siège : 8 Rue Edmond De Goncourt, 94000 Créteil, France. Plateforme de mise en relation et de solutions de financement direct.
+            <strong className="notranslate" translate="no">R-Financial group</strong> – Siège : 8 Rue Edmond De Goncourt, 94000 Créteil, France. Plateforme de mise en relation et de solutions de financement direct.
           </p>
           <p>
             Le prêt est accordé sous réserve d'acceptation définitive du dossier après étude de la solvabilité.
@@ -124,7 +124,7 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
             className="cursor-pointer select-none hover:text-slate-300 transition-colors"
             title="R-Financial group"
           >
-            © {new Date().getFullYear()} R-Financial group. Tous droits réservés.
+            © {new Date().getFullYear()} <span className="notranslate" translate="no">R-Financial group</span>. Tous droits réservés.
           </div>
           <div className="flex flex-wrap items-center gap-4 text-[11px]">
             <LanguageSelector variant="dark" direction="up" />

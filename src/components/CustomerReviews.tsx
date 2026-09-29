@@ -3,6 +3,7 @@ import { motion } from 'motion/react';
 import { ShieldCheck, MessageSquare } from 'lucide-react';
 import { REVIEWS } from '../data';
 import { formatEuro } from '../utils/loanCalculator';
+import { protectBrand } from '../utils/brandProtection';
 
 const masterEase = [0.16, 1, 0.3, 1];
 
@@ -21,7 +22,7 @@ export const CustomerReviews: React.FC = () => {
           <div className="space-y-2 text-center lg:text-left">
             <span className="text-xs font-bold text-blue-700 uppercase tracking-wider">Témoignages récents</span>
             <h2 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              Ils ont financé leur projet avec R-Financial group
+              Ils ont financé leur projet avec <span className="notranslate" translate="no">R-Financial group</span>
             </h2>
             <p className="text-slate-600 text-sm">
               Découvrez les retours d'expérience de particuliers ayant concrétisé leurs projets grâce à nos offres de crédit.
@@ -55,7 +56,7 @@ export const CustomerReviews: React.FC = () => {
                 </div>
 
                 <p className="text-xs sm:text-sm text-slate-700 leading-relaxed italic">
-                  "{rev.comment}"
+                  "{protectBrand(rev.comment)}"
                 </p>
               </div>
 

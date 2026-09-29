@@ -43,7 +43,7 @@ export const HowItWorks: React.FC<HowItWorksProps> = ({ onStartSimulation }) => 
             <span>Processus 100% digitalisé sur mobile & web</span>
           </div>
           <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Comment obtenir votre prêt chez R-Financial ?
+            Comment obtenir votre prêt chez <span className="notranslate" translate="no">R-Financial</span> ?
           </h2>
           <p className="text-slate-600 text-base sm:text-lg">
             Oubliez la paperasse et les rendez-vous en agence. Tout se passe directement sur votre écran en 3 étapes simples et fluides.

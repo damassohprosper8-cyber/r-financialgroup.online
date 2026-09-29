@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { ChevronDown, HelpCircle, Shield, Lock, FileText, CheckCircle2 } from 'lucide-react';
 import { FAQ_ITEMS } from '../data';
+import { protectBrand } from '../utils/brandProtection';
 
 const masterEase = [0.16, 1, 0.3, 1];
 
@@ -30,7 +31,7 @@ export const FaqSection: React.FC = () => {
             </div>
 
             <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Tout savoir sur votre prêt R-Financial
+              Tout savoir sur votre prêt <span className="notranslate" translate="no">R-Financial</span>
             </h2>
 
             <p className="text-slate-600 text-sm sm:text-base leading-relaxed">
@@ -81,7 +82,7 @@ export const FaqSection: React.FC = () => {
                     onClick={() => toggleFaq(idx)}
                     className="w-full text-left p-4 sm:p-5 flex items-center justify-between gap-4 font-bold text-slate-900 text-sm sm:text-base cursor-pointer"
                   >
-                    <span>{item.question}</span>
+                    <span>{protectBrand(item.question)}</span>
                     <ChevronDown
                       className={`w-4 h-4 text-slate-500 shrink-0 transition-transform duration-300 ${
                         isOpen ? 'rotate-180 text-blue-700' : ''
@@ -98,7 +99,7 @@ export const FaqSection: React.FC = () => {
                         transition={{ duration: 0.35, ease: masterEase }}
                       >
                         <div className="px-4 sm:px-5 pb-5 pt-1 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100/80">
-                          {item.answer}
+                          {protectBrand(item.answer)}
                         </div>
                       </motion.div>
                     )}

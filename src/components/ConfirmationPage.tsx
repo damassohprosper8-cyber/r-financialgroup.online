@@ -233,7 +233,7 @@ export const ConfirmationPage: React.FC<ConfirmationPageProps> = ({ onNavigateHo
 
       {/* Footer copyright */}
       <footer className="mt-8 text-center text-xs text-slate-400">
-        © 2026 R-Financial Group • Tous droits réservés • Établissement de crédit agréé
+        © 2026 <span className="notranslate" translate="no">R-Financial Group</span> • Tous droits réservés • Établissement de crédit agréé
       </footer>
     </div>
   );
