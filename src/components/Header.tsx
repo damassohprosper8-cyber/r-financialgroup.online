@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Shield, Mail, Menu, X, ArrowRight } from 'lucide-react';
 import { RohrLogoIcon } from './RohrLogo';
+import { LanguageSelector } from './LanguageSelector';
 
 interface HeaderProps {
   onOpenSimulator: () => void;
@@ -95,8 +96,11 @@ export const Header: React.FC<HeaderProps> = ({
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: masterEase }}
-            className="hidden sm:flex items-center gap-4"
+            className="hidden sm:flex items-center gap-3"
           >
+            {/* Discreet multilingual translation switcher */}
+            <LanguageSelector />
+
             <a
               href="mailto:contact@r-financialgroup.online"
               className="flex items-center gap-2 text-xs font-semibold text-slate-700 hover:text-blue-700 bg-slate-100/90 hover:bg-slate-200/80 px-3.5 py-2.5 rounded-xl transition-all duration-200 hover:-translate-y-0.5"
@@ -119,8 +123,9 @@ export const Header: React.FC<HeaderProps> = ({
             </motion.button>
           </motion.div>
 
-          {/* Mobile menu trigger */}
+          {/* Mobile menu trigger with discreet language button */}
           <div className="flex sm:hidden items-center gap-2">
+            <LanguageSelector />
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="p-2 rounded-lg text-slate-700 hover:bg-slate-100 transition-colors"

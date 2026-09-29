@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, Mail, MapPin, Lock } from 'lucide-react';
 import { RohrLogoIcon } from './RohrLogo';
+import { LanguageSelector } from './LanguageSelector';
 
 interface FooterProps {
   onSecretAdminTrigger?: () => void;
@@ -126,6 +127,7 @@ export const Footer: React.FC<FooterProps> = ({ onSecretAdminTrigger }) => {
             © {new Date().getFullYear()} R-Financial group. Tous droits réservés.
           </div>
           <div className="flex flex-wrap items-center gap-4 text-[11px]">
+            <LanguageSelector variant="dark" direction="up" />
             <a href="#" className="hover:text-white transition-colors">Mentions Légales</a>
             <a href="#" className="hover:text-white transition-colors">Données Personnelles (RGPD)</a>
             <a href="#simulateur" className="hover:text-white transition-colors">Barème des Taux & TAEG</a>

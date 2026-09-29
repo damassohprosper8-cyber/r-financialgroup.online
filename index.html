@@ -18,6 +18,20 @@
   </head>
   <body class="font-sans antialiased text-slate-900 bg-slate-50">
     <div id="root"></div>
+    
+    <!-- Conteneur Google Translate (masqué pour préserver le design intact) -->
+    <div id="google_translate_element" style="display:none;" aria-hidden="true"></div>
+    <script type="text/javascript">
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'fr',
+          layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
